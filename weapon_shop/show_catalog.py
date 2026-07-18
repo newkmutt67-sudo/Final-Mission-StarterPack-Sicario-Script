@@ -5,9 +5,13 @@
 from data import weapons_catalog
 
 def show_catalog():
+    for key,value in weapons_catalog.items():
+        print(f'{key} ชื่ออาวุธ {value["name"]} ราคา {value["price"]} พลัง {value["bonus"]}')
+
+
+
 #   - print อาวุธทุกชิ้นใน weapons_catalog บรรทัดละชิ้น (รหัส, ชื่อ, ราคา, พลังโบนัส)
     # TODO: เขียนโค้ดตรงนี้
-    pass
 
 
 # ทดสอบเฉพาะไฟล์ตัวเอง: พิมพ์  python -m weapon_shop.show_catalog
