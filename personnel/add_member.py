@@ -5,12 +5,26 @@
 from data import family_members
 
 def add_member(name, age, power, money):
-#   - คำนวณ role: power >= 8 -> "Hitman" | money >= 1000000 -> "Sponsor" | นอกนั้น -> "Slave"
-#   - สร้าง dict สมาชิกใหม่ (key: name, age, role, power, money, equipment เริ่มต้น "ไม่มี")
-#   - เพิ่มเข้า family_members แล้ว return dict นั้น
-    # TODO: เขียนโค้ดตรงนี้
-    pass
+    
+    if power >= 8 :
+        role = "Hitman"
+    else:
+        role = "Slave"
 
+    if money >= 1000000 :
+        role = "Sponsor"
+    else:
+        role = "Slave"
+    new_people = {
+        "name" : name ,
+        "age" : age ,
+        "role" : role ,
+        "power" : power ,
+        "money" : money ,
+        "equiment" : "ไม่มี"
+    }
+    family_members.append(add_member)
+    return
 
 # ทดสอบเฉพาะไฟล์ตัวเอง: พิมพ์  python -m personnel.add_member
 if __name__ == "__main__":
