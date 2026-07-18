@@ -4,18 +4,26 @@
 # =====================================================
 
 def equip_item(person, weapon):
-#   - เช็คเงิน: เงินของ person ไม่พอราคา weapon -> ซื้อไม่ได้
-#   - เช็คอาวุธ: person มีอาวุธอยู่แล้ว (equipment ไม่ใช่ "ไม่มี") -> ใส่เพิ่มไม่ได้
-#   - ผ่านทั้งคู่ -> หักเงิน, เปลี่ยน equipment เป็นชื่ออาวุธ, บวก bonus เข้า power
-#   - return {"status": True/False, "message": ข้อความบอกผล}
-    # TODO: เขียนโค้ดตรงนี้
-    pass
+# #   - เช็คเงิน: เงินของ person ไม่พอราคา weapon -> ซื้อไม่ได้
+# #   - เช็คอาวุธ: person มีอาวุธอยู่แล้ว (equipment ไม่ใช่ "ไม่มี") -> ใส่เพิ่มไม่ได้
+# #   - ผ่านทั้งคู่ -> หักเงิน, เปลี่ยน equipment เป็นชื่ออาวุธ, บวก bonus เข้า power
+# #   - return {"status": True/False, "message": ข้อความบอกผล}
+#     # TODO: เขียนโค้ดตรงนี้
+#     pass
+    if person["money"] < weapon['price'] :
+        return {"status": False, "message": "ซื้อไม่ได้"}
+    if person["equipment"] != "ไม่มี" :
+        return {"status": False, "message": "มีอาวุธอยู่แล้ว"}
+    person["money"] -= weapon['price']
+    person["equipment"] = weapon["name"]
+    person["power"] = weapon["bonus"]
+    return {"status": True, "message": "แล้วเสร็จสมบูรณ์"}
 
 
 # ทดสอบเฉพาะไฟล์ตัวเอง: พิมพ์  python -m weapon_shop.equip_item
 if __name__ == "__main__":
-    vito = {"name": "Vito", "money": 60000, "power": 5, "equipment": "ไม่มี"}
-    gun = {"name": "ปืนพก 9mm", "price": 50000, "bonus": 5}
+    vito = {"name": "Vito", "money": 10000, "power": 5, "equipment": "ไม่มี"}
+    gun = {"name": "ปืนพก 9mm", "price": 5000, "bonus": 5}
 
     print(equip_item(vito, gun))   # ต้องได้ status True
     print(vito)                    # เงินเหลือ 10000, power เป็น 10, equipment เป็นปืน
